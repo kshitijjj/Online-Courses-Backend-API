@@ -5,3 +5,4 @@ dotenv
 flask-jwt-extended
 psycopg2
 marshmallow
+gunicorn
