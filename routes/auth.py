@@ -52,8 +52,10 @@ class users_login(MethodView):
             is_email.is_admin=True
             is_email.role="instructor"
 
-        token=create_access_token(identity=str(is_email.id),
+        try:
+            token=create_access_token(identity=str(is_email.id),
                                   additional_claims={"role":is_email.role,
                                                      "is_admin":is_email.is_admin})
-        return {"message":"user login successfully","token":token},200
-
+            return {"message":"user login successfully","token":token},200
+        except Exception as e:
+            return {"message":str(e)}
